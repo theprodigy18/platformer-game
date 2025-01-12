@@ -37,14 +37,14 @@ public void OnJump(InputAction.CallbackContext context)
   {
     StartCoroutine(Jump());
   }
-  else if (context.canceled !isCuttingJump && rb.linearVelocityY >= 0 && canCuttingJump) // we need to check if the jumping states is not in falling states by using linearVelocityY on Rigidbody2D
+  else if (context.canceled && !isCuttingJump && rb.linearVelocityY >= 0 && canCuttingJump) // we need to check if the jumping states is not in falling states by using linearVelocityY on Rigidbody2D
   {
     isCuttingJump = true; // set the cutting jump to be true so the player cant do cut jump multiple time in air, its can causes character stopping in mid-air for period times.
     StartCoroutine(CutJump());
   }
 }
 ```
-You can assign this function to your player input component in inspector or assign it to generated C# class inputActions in onEnable function.
+You can assign this function to your player input component in inspector or assign it to generated C# class inputActions in OnEnable function.
 ### **With KeyCode**
 ```csharp
 private void Update()
